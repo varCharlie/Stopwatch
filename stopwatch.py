@@ -55,7 +55,7 @@ class Stopwatch:
     def total(self):
         total = sum(t['stop']-t['start'] for t in self.__times)
         if self.__precision:
-            return float(str('{:0' + str(self.__precision) + 'f}').format(total))
+            return float(str('{:.' + str(self.__precision) + 'f}').format(total))
         else:
             return total
 
