@@ -24,7 +24,7 @@ class NotRunningError(InvalidStateError):
 
 class NotStoppedError(InvalidStateError):
     '''Stopwatch Is Not Stopped Error'''
-    def __init__(self, caller):
+    def __init__(self):
         msg = "Invalid State: Expected Stopwatch to be stopped."
         super().__init__(msg)
 
