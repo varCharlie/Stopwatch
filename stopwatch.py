@@ -36,10 +36,9 @@ class Stopwatch:
         self.__is_running = False
         self.__times = []
         if isinstance(precision, float):
-            precision = str(precision).split('.')[0]
-        if isinstance(precision, int):
-            precision = str(precision)
-        self.__precision = precision
+            self.__precision = str(precision).split('.')[0]
+        elif isinstance(precision, int):
+            self.__precision = str(precision)
 
 
     def start(self):
@@ -47,10 +46,7 @@ class Stopwatch:
         if self.__is_running:
             raise NotStoppedError
         self.__is_running = True
-        self.__times.append({
-                'start': time.time(),
-                'stop': None,
-                })
+        self.__times.append({'start': time.time(), 'stop': None})
 
     def stop(self):
         '''Stop the stopwatch if it's running'''
