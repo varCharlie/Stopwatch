@@ -43,15 +43,15 @@ def main():
             choice = input(choices)
             if choice in ('start', 'stop', 'reset', 'quit'):
                 actions[choice]()
-                print('\n\n\t>> ' + output[choice])
+                sys.stdout.write('\n\n\t>> ' + output[choice])
             elif choice in ('total', 'status'):
-                print('\n\n\t>> ' + output[choice])
-                print('\t>> {} is {}'.format(choice, actions[choice]()))
+                sys.stdout.write('\n\n\t>> ' + output[choice])
+                sys.stdout.write('\t>> {} is {}'.format(choice, actions[choice]()))
             else:
-                print("\n\tI'm sorry, I didn't understand.")
-            print('\n')
+                sys.stdout.write("\n\tI'm sorry, I didn't understand.")
+            sys.stdout.write('\n')
     except KeyboardInterrupt:
-        print('\nGoodbye!')
+        sys.stdout.write('\nGoodbye!\n')
         sys.exit()
 
 if __name__ == '__main__':
