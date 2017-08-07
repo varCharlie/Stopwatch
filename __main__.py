@@ -2,12 +2,12 @@
 import sys
 import argparse
 
-import stopwatch
+from Stopwatch import stopwatch
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-p', '--precision', required=False, default=None,
-                        help='Floating pt precision limit.')
+    parser.add_argument('-p', '--precision', required=False,
+                        default=4, help='Floating pt precision limit.')
     args = parser.parse_args()
 
     watch = stopwatch.Stopwatch(precision=args.precision)
@@ -43,12 +43,12 @@ def main():
             choice = input(choices)
             if choice in ('start', 'stop', 'reset', 'quit'):
                 actions[choice]()
-                sys.stdout.write('\n\n\t>> ' + output[choice])
+                sys.stdout.write('\n\n\t>> %s\n' % output[choice])
             elif choice in ('total', 'status'):
-                sys.stdout.write('\n\n\t>> ' + output[choice])
-                sys.stdout.write('\t>> {} is {}'.format(choice, actions[choice]()))
+                sys.stdout.write('\n\n\t>> %s\n' % output[choice])
+                sys.stdout.write('\t>> %s is %s\n' % (choice, actions[choice]()))
             else:
-                sys.stdout.write("\n\tI'm sorry, I didn't understand.")
+                sys.stdout.write("\n\tI'm sorry, I didn't understand.\n")
             sys.stdout.write('\n')
     except KeyboardInterrupt:
         sys.stdout.write('\nGoodbye!\n')
