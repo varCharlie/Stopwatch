@@ -9,13 +9,18 @@
 import time
 
 # Exception Wrappers
-class NotRunningError(RuntimeError):
+class StopwatchError(RuntimeError):
+    '''Stopwatch base error class. Allows `except Exception:`'''
+    @abstractmethod
+    def __init__(self): pass
+
+class NotRunningError(StopwatchError):
     '''Stopwatch Is Not Running Error'''
     def __init__(self):
         msg = "Invalid State: Expected Stopwatch to be running."
         super().__init__(msg)
 
-class NotStoppedError(RuntimeError):
+class NotStoppedError(StopwatchError):
     '''Stopwatch Is Not Stopped Error'''
     def __init__(self):
         msg = "Invalid State: Expected Stopwatch to be stopped."
