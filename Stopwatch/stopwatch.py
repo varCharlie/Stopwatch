@@ -95,8 +95,8 @@ class Stopwatch:
                 bool: (True, False),
                 int: (1, 0),
                 }
-        if typename not in output_map.keys():
-            raise ArgumentError("`typename` must be in [str, bool, int]")
+        if not isinstance(typename, output_map.keys()):
+            raise ArgumentError("`typename` must be in the set {str, bool, int}")
         if self.__is_running:
             return output_map[typename][0]
         else:
